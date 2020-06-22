@@ -1,6 +1,6 @@
-These guides are written by me, [Theo Tolv](https://iconara.net/). I've been working with Athena since its launch, and been a constant annoyance to the Athena service team for all that time.
+This guide is written by [Theo Tolv](https://iconara.net/). I've been working with Athena since its launch, and been a constant annoyance to the Athena service team for all that time.
 
-After answering over a hundred [questions tagged `amazon-athena`][1] on Stack Overflow, I felt that there needed to be a place where the questions that come up again and can be answered. These guides are meant to cover the most frequently asked questions, and more.
+After answering over a hundred [questions tagged `amazon-athena`][1] on Stack Overflow, I felt that there needed to be a place where the questions that come up again and can be answered. This guide is meant to cover the most frequently asked questions, and more.
 
 ## How to ask me questions
 
