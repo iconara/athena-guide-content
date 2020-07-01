@@ -19,4 +19,4 @@ I don't like to be categorical and say you should absolutely never do something.
 
 ## What to use instead
 
-See [How to add partitions](adding-partitions).
+See [five ways to add partitions](five-ways-to-add-partitions).
