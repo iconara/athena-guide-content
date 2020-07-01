@@ -7,7 +7,7 @@ author: Theo Tolv
 
 If you look at the Athena documentation you often see data organized with paths that contain key value pairs, like `country=fr/…` or `year=2020/month=06/day=26/…`. This is Hive style (or format) partitioning. The paths include both the names of the partition keys and the values that each path represents. It can be convenient and self documenting, but it's also uncommon to see it outside outside the Hadoop and Hive ecosystem, where it originated.
 
-## Self documenting
+## A self-documenting scheme
 
 Consider a file listing like this one:
 
@@ -22,7 +22,7 @@ data/day=2020-04-21/country=fr/0c8e74a2.json
 data/day=2020-04-21/country=us/68af2b83.json
 ```
 
-You can probably guess that the data is partitioned by day and country just by looking at the file paths. The benefit of this style is that it is more or less self documenting and self describing. Both humans and computers can see how the data is partitioned, and select only the files relevant for a query that includes conditions on `day` and `country`.
+You can probably guess that the data is partitioned by day and country just by looking at the file paths. The benefit of this style is that it is more or less self-documenting. Both humans and computers can see how the data is partitioned, and select only the files relevant for a query that includes conditions on `day` and `country`.
 
 ## Should you use Hive style partitioning?
 
