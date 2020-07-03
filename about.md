@@ -12,6 +12,10 @@ If you have Amazon Athena related questions the best place to ask them is on [St
 
 If you have specific questions for me you can find me as [@iconara on Twitter](https://twitter.com/iconara), or find me by name on some of the AWS Slack channels, like [AWS Developers](https://awsdevelopers.slack.com), [Open Guide to AWS](https://og-aws.slack.com/), or [AWS Community Nordics](https://aws-community-nordics.slack.com).
 
+## Where to report issues
+
+The content for this site is available on at [iconara/athena-guide-content](http://github.com/iconara/athena-guide-content).
+
 ## How to support this project
 
 If you find this guide helpful you can [buy me a coffee](https://buymeacoffee.com/iconara).
