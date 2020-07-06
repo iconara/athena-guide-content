@@ -108,9 +108,15 @@ The serdes handle non-string column types differently. `OpenCSVSerDe` gets strin
 
 The difference in how they parse field values also means that they can interpret the same data differently. Besides how empty fields are treated, there are also differences in how timestamps and dates are parsed. `LazySimpleSerDe` expects the `java.sql.Timestamp` format similar to ISO timestamps, while `OpenCSVSerDe` expects UNIX timestamps.
 
-## Column order
+## Column names and order
 
-The columns of the table must be defined in the same order as they appear in the files. Both CSV serdes read each line and produce map the fields to the columns in order. You might think that if there was a header in the files the serde could use it to map the fields to columns by name instead of sequence, but this is is not supported by either serde.
+The columns of the table must be defined in the same order as they appear in the files. Both CSV serdes read each line and map the fields of a record to table columns in sequential order. If a line has more fields than there are columns, the extra columns are skipped, and if there are fewer fields the remaining columns are filled with `NULL`.
+
+You might think that if the data has a header the serde could use it to map the fields to columns by name instead of sequence, but this is is not supported by either serde. On the other hand, this means that the names of the columns are not constrained by the file header and you are free to call the columns of the table what you want.
+
+Given the above you may have gathered that it's possible to evolve the schema of a CSV table, within some constraints. It's possible to add columns, as long as they are added last, and removing the last columns also works – but you can only do either or, and adding and removing columns at the start or in the middle also does not work.
+
+In practice this means that if you at some point realize you need more columns you can add these, but you should avoid all other schema evolution. For example, if you at some point removed a column from the table, you can't later add columns without rewriting the old files that had the old column data.
 
 ## Which one to use?
 
