@@ -14,7 +14,7 @@ If you have specific questions for me you can find me as [@iconara on Twitter](h
 
 ## Where to report issues
 
-The content for this site is available on at [iconara/athena-guide-content](http://github.com/iconara/athena-guide-content).
+The content for this site is available at [iconara/athena-guide-content](http://github.com/iconara/athena-guide-content) where you can report issues and contribute fixes.
 
 ## How to support this project
 
