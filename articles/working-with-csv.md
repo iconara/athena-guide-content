@@ -106,7 +106,7 @@ When `LazySimpleSerDe` and `OpenCSVSerDe` reads an empty field they interpret it
 
 The serdes handle non-string column types differently. `OpenCSVSerDe` gets strings from the `OpenCSV` parser and then parses these strings to typed values, while `LazySimpleSerDe` converts directly from the byte stream. This results in the different interpretation of empty fields, as discussed above.
 
-The difference in how they parse field values also means that they can interpret the same data differently. Besides how empty fields are treated, there are also differences in how timestamps and dates are parsed. `LazySimpleSerDe` expects the `java.sql.Time` format similar to ISO timestamps, while `OpenCSVSerDe` expects UNIX timestamps.
+The difference in how they parse field values also means that they can interpret the same data differently. Besides how empty fields are treated, there are also differences in how timestamps and dates are parsed. `LazySimpleSerDe` expects the `java.sql.Timestamp` format similar to ISO timestamps, while `OpenCSVSerDe` expects UNIX timestamps.
 
 ## Column order
 
