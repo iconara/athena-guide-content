@@ -11,11 +11,11 @@ Coming from traditional databases to Athena can be a little bit confusing. In mo
 
 There are at least five ways you can add partitions to Athena. Technically, all but one boil down to the same thing under the hood, but they can still be more or less convenient to use in different situations. Here are the five:
 
-* Partition projection
-* Using SQL with Athena
-* MSCK REPAIR TABLE
-* Using the Glue Data Catalog API
-* Using a Glue Crawler
+* [Partition projection](#partition-projection)
+* [Using SQL with Athena](#using-sql-with-athena)
+* [MSCK REPAIR TABLE](#msck-repair-table)
+* [Using the Glue Data Catalog API](#using-the-glue-data-catalog-api)
+* [Using a Glue Crawler](#glue-crawlers)
 
 ## Partition Projection
 
