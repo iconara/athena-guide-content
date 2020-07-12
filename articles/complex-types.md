@@ -253,4 +253,12 @@ Athena's result metadata will indicate that the `tags` column is a string, and y
 
 ## Summary
 
+You can model very elaborate complex types in Athena tables, just look at the [CloudTrail schema][cloudtrail], with it's arrays of structs, and structs within structs. Even when properties are completely free form you won't get stuck because there's the [JSON type and functions][json] that let you unpack and work with them at query time.
 
+When queries get too complicated you can create views to hide the details of how to extract and flatten the values from hierarchical and messy data models.
+
+Even when you don't have complex types in the source data you can benefit a lot from Athena's support for complex types. Being able to aggregate rows into arrays can make things that have always been clunky in the relational model much more elegant.
+
+The only problem with Athena and complex types is really how to deal with them in results, and that the consumers of the results may not expect or know how to deal with complex types. It's unfortunate that the Athena team didn't think through the consequences of using CSV as an output format when it comes to complex types, but luckily we can work around it using the JSON data type.
+
+  [cloudtrail]: https://docs.aws.amazon.com/athena/latest/ug/cloudtrail-logs.html
