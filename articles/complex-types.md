@@ -5,7 +5,11 @@ author: Theo Tolv
 ---
 # Working with complex types
 
-Most of the data formats that Athena supports have support for complex types in the form of lists and maps. It even supports lists and maps in CSV files, if you really want it to. SQL wasn't designed with complex types in mind, though, and although many SQL engines have some complex type support today almost all of it is non-standard.
+Most of the data formats that Athena supports have support for complex types in the form of lists and maps. It even supports lists and maps in CSV files, if you really want it to.
+
+The relational model wasn't made with complex types in mind, but modern data is very rarely flat. Developers like data formats like JSON because they allow for expressing things like sone-to-many relationships naturally and in a self-contained manner. When you try to describe the world you often end up with lists of things, the one-or-more type of relationship is very common, and things like lists of tags, or key/value pairs of metadata is more or less standard.
+
+Before Athena I worked a lot with Redshift, and was often frustrated with the lack of complex types. The data I worked with almost always contained lists of strings and other similarly "simple" complex types. With Athena this is almost never an issue.
 
 ## Complex types defined
 
