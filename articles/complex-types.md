@@ -17,7 +17,7 @@ First, let's define complex types so that we're on the same page.
 
 ## Complex types defined
 
-Simple types, or "scalars", are things like `number`, `boolean`, `string`, and `timestamp`. Complex types are types that refer to other types – or more concretely in the case of Athena, `array`, `map`, and `struct`.
+Simple types, or "scalars", are things like `number`, `boolean`, `string`, and `timestamp`. Complex types are types that refer to other types – or more concretely in the case of Athena, `array` (lists of elements), `map` (key/value associations), and `struct` (key/value associations with a fixed schema).
 
 Complex types can be for example `array<string>` (an array of strings), `map<string,boolean>` (a map with string keys and boolean values), or `struct<name:string,age:tinyint>` (a record with a string property called "name" and an integer property called "age"). Complex types can have arbitrarily complex structure, for example `array<struct<title:string,author:struct<name:string,email:string>,tags:map<string,string>>>` could be a way to describe a list of article metadata.
 
