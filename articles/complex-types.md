@@ -11,6 +11,10 @@ The relational model wasn't made with complex types in mind, but modern data is 
 
 Before Athena I worked a lot with Redshift, and was often frustrated with the lack of complex types. The data I worked with almost always contained lists of strings and other similarly "simple" complex types. With Athena this is almost never an issue.
 
+In this article I'm going to cover how to use complex types in three different contexts: how to create tables when you have [complex types in data](#complex-types-in-data), how to work with [complex types in queries](#complex-types-in-queries), and how to deal with [complex types in results](#complex-types-in-results).
+
+First, let's define complex types so that we're on the same page.
+
 ## Complex types defined
 
 Simple types, or "scalars", are things like `number`, `boolean`, `string`, and `timestamp`. Complex types are types that refer to other types – or more concretely in the case of Athena, `array`, `map`, and `struct`.
@@ -218,7 +222,7 @@ The JSON type and functions are useful for working with arbitrary structures and
   [json_extract_scalar]: https://prestosql.io/docs/0.172/functions/json.html#json_extract_scalar
   [json_extract]: https://prestosql.io/docs/0.172/functions/json.html#json_extract
 
-## Complex types in the result
+## Complex types in results
 
 So far I've described how to work with complex types in the data, how you can work with them in queries, and now it's time to discuss how to deal with them in the result of a query.
 
