@@ -19,7 +19,7 @@ What the command does is that it recursively lists your table's location on S3, 
 
 Every time you run the command it will do a full traversal of your table's location, which means it only gets slower and slower with time as you add more data. Very quickly, almost all of the work it does will be going through prefixes that haven't changed, but since it can't know where you've added, removed, or changed objects it has to go through it all every time.
 
-If you want to know more about what makes this command so inefficient, you can find some more information in the comments and answers to the Stack Overflow question [What does MSCK REPAIR TABLE do behind the scenes and why it's so slow?](https://stackoverflow.com/questions/53667639/what-does-msck-repair-table-do-behind-the-scenes-and-why-its-so-slow).
+If you want to know more about what makes this command so inefficient, you can find some more information in the comments and answers to the Stack Overflow question [What does MSCK REPAIR TABLE do behind the scenes and why it's so slow?](https://stackoverflow.com/q/53667639/1109).
 
 ## When to use it
 
