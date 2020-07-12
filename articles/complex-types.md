@@ -43,7 +43,7 @@ Lots of tools exist that are aimed at helping you figure out the schema of JSON 
 
 One exampe of free-form properties like these can be found in CloudTrail logs. There are properties like `requestParameters` and `additionalEventData` that are service specific. Even if these properties could potentially be described using the union of what all AWS services put into them today, we can't tell how future services will use them. These properties both have and don't have schemas, depending on your point of view. From a global perspective where you want to consume events from all services, and future services, you'll have to think of them as free-form structures.
 
-Luckily, there's a solution for that, and I'm going to describe it in detail when discussing how to work with complex types in queries. For now, you can do as the [Athena documentation about CloudTrail][cloudtrail] suggests and use the type `string` for columns where the type can't be pinned down. You can also use `map<string,string>` when you know a property is an object, but not what the values are.
+Luckily, there's a solution for that, and I'm going to describe it in detail when discussing how to work with [complex types in queries and free form structures](#working-with-free-form-structures). For now, you can do as the [Athena documentation about CloudTrail][cloudtrail] suggests and use the type `string` for columns where the type can't be pinned down. You can also use `map<string,string>` when you know a property is an object, but not what the values are.
 
 ### Parquet, ORC, and Avro
 
