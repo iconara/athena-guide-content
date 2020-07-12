@@ -9,6 +9,8 @@ CSV could be the most common data interchange format there is, and since it's al
 
 Athena unsurprisingly has good support for reading CSV data, but it's not always easy to know what you should use as there are multiple implementations with completely different features and ways of configuration.
 
+In this article I will cover how to use the [default CSV implementation](#the-default-implementation), what do do when you have [quoted fields](#quoted-fields), how to [skip headers](#skipping-header-lines), how to deal with [NULL and empty fields](#empty-fields-and-null-values), how [types are interpreted](#type-conversion), [column names and column order](#column-names-and-order), as well as [general guidance](#which-one-to-use).
+
 ## The default implementation
 
 The component in Athena that is responsible for reading and parsing data is called a serde, short for serializer/deserializer. If you don't specify anything else when creating an Athena table you get a serde called [`LazySimpleSerDe`][1], which was made for delimited text such as CSV. It can be configured for different delimiters, escape characters, and line endings, among other things.
