@@ -218,6 +218,10 @@ In these cases the value extracted was a scalar, but you can extract arrays and 
 
 The JSON type and functions are useful for working with arbitrary structures and columns where the schema is different from row to row. I've also come across [situations where casting to the JSON type can be a way to get around tricky situations where types don't exactly match](https://stackoverflow.com/questions/62664578/athena-union-do-i-need-to-define-struct-columns). It's sort of a wildcard type, and can both be used and abused.
 
+### Hide the sausage making with views
+
+When your queries become really complicated due to long expressions that extract values from deeply nested structures, or multiple levels of aggregation and flattening, it's a good idea to create a view to hide all the messy sausage making. It's going to me much easier for the people and code that will query the data set if it's clean and neat.
+
   [json]: https://prestosql.io/docs/0.172/functions/json.html
   [json_extract_scalar]: https://prestosql.io/docs/0.172/functions/json.html#json_extract_scalar
   [json_extract]: https://prestosql.io/docs/0.172/functions/json.html#json_extract
