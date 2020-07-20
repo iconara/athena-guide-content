@@ -11,6 +11,8 @@ This makes it possible to do pretty advanced things, but it's not always easy to
 
 In data formats like JSON it's very common to have arrays and map properties, and one question that often comes up is how you flatten these structures to work better in a traditional tabular format – in other words, how to turn array elements into rows. The answer is the [`UNNEST`][1] operator.
 
+In this article I will cover [how to flatten arrays to rows](#unnesting-arrays), [how to flatten maps to rows](#unnesting-maps), but also [when you should be using `UNNEST`](#when-to-unnest).
+
 ## Unnesting arrays
 
 `UNNEST` is a bit peculiar as it is is an operator that produces a relation, unlike most functions which transform or aggregate scalar values.
