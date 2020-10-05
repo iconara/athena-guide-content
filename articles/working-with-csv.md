@@ -110,6 +110,27 @@ The serdes handle non-string column types differently. `OpenCSVSerDe` gets strin
 
 The difference in how they parse field values also means that they can interpret the same data differently. Besides how empty fields are treated, there are also differences in how timestamps and dates are parsed. `LazySimpleSerDe` expects the `java.sql.Timestamp` format similar to ISO timestamps, while `OpenCSVSerDe` expects UNIX timestamps.
 
+## Text encodings
+
+Both `LazySimpleSerDe` and `OpenCSVSerDe` by default assume that the data is UTF-8 encoded, and may garble non-UTF-8 data, or fail queries when the data contains byte sequences that are not valid UTF-8.
+
+If your data is not UTF-8 you can configure `LazySimpleSerDe` with the `serialization.encoding` table property using one of Java's standard charset names (see [`java.nio.charset.Charset`](https://docs.oracle.com/javase/8/docs/api/java/nio/charset/Charset.html) for the details):
+
+```sql
+CREATE EXTERNAL TABLE city_data (
+  country string,
+  city string,
+  population int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+LOCATION 's3://example-bucket/city-data'
+TBLPROPERTIES (
+  'serialization.encoding' = 'ISO-8859-1'
+)
+```
+
+Unfortunately the `OpenCSVSerDe` seems to not to allow the encoding to be configured.
+
 ## Column names and order
 
 The columns of the table must be defined in the same order as they appear in the files. Both CSV serdes read each line and map the fields of a record to table columns in sequential order. If a line has more fields than there are columns, the extra columns are skipped, and if there are fewer fields the remaining columns are filled with `NULL`.
