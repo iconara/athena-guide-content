@@ -7,6 +7,13 @@ author: Theo Tolv
 
 Athena is not an RDBMS or a data warehouse appliance, instead it's a query engine. Unlike most databases Athena doesn't manage the storage of your data, it just provides an interface for querying data stored on S3. In this way it is more like Spark than it is like Redshift. While most of your experience with SQL and databases is transferrable to Athena, there are a few things that are distinctly different and that you need to keep in mind to get the most out of it.
 
+* [The origins and components of Athena](#the-origins-and-components-of-athena)
+* [What problems Athena solves](#what-problems-athena-solves)
+* [Key concepts](#key-concepts)
+* [Running queries](#running-queries)
+* [Permissions](#permissions)
+* [Pricing Model](#pricing-model)
+
 ## The origins and components of Athena
 
 You've probably heard that Athena is built on the open source query engine [Presto](https://prestosql.io). Unlike AWS' other similar services like their managed ElasticSearch, Kafka, and Cassandra offerings, Athena is not just a managed Presto cluster. In fact, AWS has another service that's is closer to managed Presto: Elastic MapReduce (EMR), which can be configured to run Presto clusters.
@@ -17,7 +24,7 @@ Athena is based on a fairly old version of Presto – 0.172 at the time of writ
 
 Athena was initially launched with its own data catalog, the component that keeps track of your databases and tables, but when Glue was launched it migrated to using Glue Data Catalog. Using Athena is really using three distinct AWS services; Athena itself, Glue, and S3 – and also IAM for permissions (there is also Lake Formation, but that's a topic for another post). This is something that you are aware of at almost all times, and something that trips up many new users, especially when it comes to permissions. There's not that many other AWS services where you need to know a lot about other services to use it.
 
-## What problems does Athena solve
+## What problems Athena solves
 
 I like to say that Athena activates all the data you already have on S3. Most companies that have used AWS for a while have probably accumulated a lot of random data on S3, logs of different kinds, backups, user data, etc. Perhaps you call this your "data lake", like so many startups do to inflate their valuation and enterprises do to seem to be on top of things. Whatever your pet name, before Athena you would either run jobs in EMR or on some home grown ETL "platform" to crunch the data into some useful format, which you stored in Redshift, some other RDBMS, or as new files on S3. There's a ton of tools in EMR for this, some of them are even good – but running clusters 24/7 is expensive, while running on demand is finicky, especially if you want to maintain state between runs.
 
