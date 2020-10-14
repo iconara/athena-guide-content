@@ -11,7 +11,7 @@ _You should almost never use this command._
 
 The main problem is that this command is very, very inefficient. You won't notice when you have only a few partitions, but as the number grows this command will run slower and slower. The [Athena documentation for the command][1] even mentions how this command sometimes times out and that you "should run the statement on the same table until all partitions are added".
 
-The command also only works if your data set is organized using [Hive style partitioning](/articles/hive-style-partitioning). You can't use it with, for example, Kinesis Data Firehose output, CloudTrail logs, or most other data sets that are produced by tools outside of the Hive ecosystem.
+The command also only works if your data set is organized using [Hive style partitioning](/articles/hive-style-partitioning/). You can't use it with, for example, Kinesis Data Firehose output, CloudTrail logs, or most other data sets that are produced by tools outside of the Hive ecosystem.
 
 ## Why is it so slow?
 
@@ -29,6 +29,6 @@ I don't like to be categorical and say you should absolutely never do something.
 
 The best solution is to use [Partition Projection](https://docs.aws.amazon.com/athena/latest/ug/partition-projection.html), to avoid having to manage partitions at all. If that is not possible, the best thing is if you can add code to the process that produces the table's data that adds partitions after it's uploaded the data to S3. That way the table will be up to date as soon as the data is on S3. Alternatively you can trigger a Lambda function that is triggered by S3 notifications and add partitions when new objects are created.
 
-I've written more about different ways to add partitions in [Five ways to add partitions](/articles/five-ways-to-add-partitions).
+I've written more about different ways to add partitions in [Five ways to add partitions](/articles/five-ways-to-add-partitions/).
 
   [1]: https://docs.aws.amazon.com/athena/latest/ug/msck-repair-table.html
