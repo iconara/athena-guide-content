@@ -31,7 +31,7 @@ The permissions model is far from perfect, and it has a very steep learning curv
 
 A side effect of the permissions model is that a principal that is allowed to query a table will also be allowed to download all the files belonging to that table. In most cases this is not really an issue, the same data can after all be downloaded by making SQL queries, but there may be situations where the principal is only allowed to query views that aggregate the data or tables where some properties present in the data are not mapped to columns, or situations where you just don't want to provide access to the raw data. In these cases you can use the [`aws:calledVia`](https://aws.amazon.com/blogs/security/how-to-define-least-privileged-permissions-for-actions-called-by-aws-services/) condition on the S3 statements to say that they are only allowed to be performed by the Athena service, not by the principal directly.
 
-## There is much more to Athena
+## More Athena basics
 
 The following articles continue this guide to understanding the basics of Athena:
 

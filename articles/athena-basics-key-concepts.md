@@ -65,7 +65,7 @@ A lot of what is written about partitioning in Athena uses a partitioning style 
 
 You can map the partitioning of most data sets to Athena tables, but there is one situation that Athena does not handle: files with different schemas in the same directory. Someone might have decided to export data into directories named from the date, but mix files representing different kinds of data in these. For example `data/2020-08-21/orders.csv` and `data/2020-08-21/invoices.csv`. This might make sense when producing the data, but is unfortunately incompatible with the way Athena works. Athena will process all files found in a table or partition's location, and there is no way to configure it to filter based on file name.
 
-## There is much more to Athena
+## More Athena basics
 
 The following articles continue this guide to understanding the basics of Athena:
 

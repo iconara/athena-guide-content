@@ -80,7 +80,7 @@ You should also avoid deeply nested directory structures and too many files in a
   [orc-serde]: https://docs.aws.amazon.com/athena/latest/ug/orc-serde.html
   [parquet-serde]: https://docs.aws.amazon.com/athena/latest/ug/parquet-serde.html
 
-## There is much more to Athena
+## More Athena basics
 
 The following articles continue this guide to understanding the basics of Athena:
 

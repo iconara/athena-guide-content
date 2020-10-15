@@ -46,7 +46,7 @@ When you run a query in most RDBMS' you need to stick around until the response 
 
 I'll talk more about the pricing model below, but it's worth mentioning here too: Athena is priced very differently from services like Redshift, EMR, and Glue ETL. Instead of capacity/duration-based pricing Athena charges by the amount of data you process. For many use cases this is the problem that Athena solves: the cost of _not_ using Athena is zero. You don't have to think about how your Redshift cluster is burning a hole in your budget on weekends when no one is using it, for example.
 
-## There is much more to Athena
+## More Athena basics
 
 The following articles continue this guide to understanding the basics of Athena:
 

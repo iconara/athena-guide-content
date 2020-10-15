@@ -43,7 +43,7 @@ At the other end of the spectrum, the pricing model is more predictable. If you 
 
 I really wish there were better tools available to predict the costs of queries. When you run a query you get the total bytes scanned, which means that you at least after the fact know the Athena charge for a particular query. Using CloudTrail you can also figure out what Glue and S3 operations were made. Using these two tools you can optimize the cost of queries. You can use the bytes scanned metric to make sure Athena takes advantage of your partitioning, and you can use CloudTrail to see how it lists and retrieves files from S3 to figure out if there are better ways you could organize your files to avoid S3 operations. It's a lot of hard work, but at least the data is there.
 
-## There is much more to Athena
+## More Athena basics
 
 The following articles continue this guide to understanding the basics of Athena:
 

@@ -75,7 +75,7 @@ Athena runs all queries in a shared cluster. While the service goes to great len
 
 Even if you stay within your quota there is however no guarantee that your queries will run immediately. You share the cluster with all other customers and that means that sometimes there are no compute resources available when you submit a query. In this scenario your query will be queued until resources become available. Athena is used for a lot of reporting applications and these tend to be configured to run jobs at specific times of the day, almost always the top of the hour. If you run a lot of queries you can notice how the amount of time your queries spend in the queue spikes around the top of every hour. This can significantly affect performance and is something that you should be aware of, especially if you are trying to optimize your queries – always look at the statistics returned by the `GetQueryExecution` API call to check how much time your query spent in the queue before making assumptions about the performance of your query or data set.
 
-## There is much more to Athena
+## More Athena basics
 
 The following articles continue this guide to understanding the basics of Athena:
 
