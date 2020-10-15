@@ -1,6 +1,6 @@
 ---
 title: Athena Basics
-date: 2020-08-21
+date: 2020-10-15
 author: Theo Tolv
 series:
   index: 1
