@@ -50,7 +50,7 @@ You can control the number of output files by (ab)using the [bucketing feature](
 
 One question that is often asked by people new to Athena is how you change the output format from CSV to something less problematic. The answer is that you can't. Athena will always write the result as a single CSV file. The only way to get the result in another way is to use CTAS, but that has a lot of overhead.
 
-The particular flavor of CSV that Athena uses for results is also unfortunate in that it can't represent the serialization of complex types unambiguosly – see [Working with Complex Types](https://athena.guide/articles/complex-types/#complex-types-in-results).
+The particular flavor of CSV that Athena uses for results is also unfortunate in that it can't represent the serialization of complex types unambiguously – see [Working with Complex Types](https://athena.guide/articles/complex-types/#complex-types-in-results).
 
 ## What's best?
 
