@@ -2,6 +2,8 @@
 title: 'Athena Basics: Working with Data'
 date: 2020-08-21
 author: Theo Tolv
+series:
+  index: 3
 ---
 # Athena Basics: Working with Data
 

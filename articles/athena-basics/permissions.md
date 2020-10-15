@@ -2,6 +2,8 @@
 title: 'Athena Basics: Permissions'
 date: 2020-08-21
 author: Theo Tolv
+series:
+  index: 5
 ---
 # Athena Basics: Running Queries
 

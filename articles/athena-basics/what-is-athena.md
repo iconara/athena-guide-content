@@ -2,6 +2,8 @@
 title: 'Athena Basics: What is Athena?'
 date: 2020-08-21
 author: Theo Tolv
+series:
+  index: 1
 ---
 # Athena Basics: What is Athena?
 

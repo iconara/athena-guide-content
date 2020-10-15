@@ -2,6 +2,8 @@
 title: 'Athena Basics: Running Queries'
 date: 2020-08-21
 author: Theo Tolv
+series:
+  index: 4
 ---
 # Athena Basics: Running Queries
 

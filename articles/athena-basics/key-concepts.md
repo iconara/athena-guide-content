@@ -2,6 +2,8 @@
 title: 'Athena Basics: Key Concepts'
 date: 2020-08-21
 author: Theo Tolv
+series:
+  index: 2
 ---
 # Athena Basics: Key Concepts
 

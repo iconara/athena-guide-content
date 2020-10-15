@@ -2,6 +2,8 @@
 title: 'Athena Basics: Pricing Model'
 date: 2020-08-21
 author: Theo Tolv
+series:
+  index: 6
 ---
 # Athena Basics: Pricing Model
 
