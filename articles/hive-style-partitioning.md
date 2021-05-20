@@ -1,6 +1,6 @@
 ---
 title: What is Hive style partitioning?
-date: 2019-06-26
+date: 2020-06-26
 author: Theo Tolv
 ---
 # What is Hive style partitioning?

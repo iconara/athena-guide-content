@@ -1,6 +1,6 @@
 ---
 title: Working with complex types
-date: 2019-07-08
+date: 2020-07-08
 author: Theo Tolv
 ---
 # Working with complex types

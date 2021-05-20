@@ -1,6 +1,6 @@
 ---
 title: Why is MSCK REPAIR TABLE so slow?
-date: 2019-06-26
+date: 2020-06-26
 author: Theo Tolv
 ---
 # Why is MSCK REPAIR TABLE so slow?
