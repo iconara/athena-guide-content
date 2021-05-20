@@ -26,7 +26,7 @@ The other articles in this series cover:
 
 ## What is a "serde"?
 
-To achieve the goal of activating the data you already have, Athena has support for a lot of different file and data formats. Though Hadoop and Hive, Presto has a concept called "serde", short for serializer/deserializer. Serdes are plugins that provide support for reading and writing different file and data formats. Athena does not allow you to add your own, but the available serdes cover most situations.
+To achieve the goal of activating the data you already have, Athena has support for a lot of different file and data formats. Through Hadoop and Hive, Presto has a concept called "serde", short for serializer/deserializer. Serdes are plugins that provide support for reading and writing different file and data formats. Athena does not allow you to add your own, but the available serdes cover most situations.
 
 Tables specify a serde so that Athena knows how to read the data during query execution. Using the [CTAS](https://docs.aws.amazon.com/athena/latest/ug/ctas.html) feature mentioned above, Athena can also write some of these formats.
 
@@ -58,7 +58,7 @@ When it comes to reading data the best format to use is the one that you have. U
 
 If you have control over the process creating the data and no other considerations constrain you, I think Parquet is the way to go. Athena works really well with Parquet, reading only as much of the files as it needs, skipping columns and whole blocks when possible. It also supports complex types (i.e. lists, maps, and structs) schema evolution (adding and removing columns, and changing types), which can save a lot of work when you must make changes.
 
-In theory ORC has provides the same benefits, but I have had less success with it. In my tests Athena seems to always read the whole files, not just the columns used by the query. Operations like `COUNT(*)` are also read the whole file, while with Parquet only the file footer is read. With ORC, columns are mapped by index, like CSV, rather than by name like JSON and Parquet, which is more limiting for schema evolution (unlike CSV this behavior [can be changed](https://docs.aws.amazon.com/athena/latest/ug/handling-schema-updates-chapter.html#index-access), though).
+In theory ORC provides the same benefits, but I have had less success with it. In my tests Athena seems to always read the whole files, not just the columns used by the query. Operations like `COUNT(*)` also read the whole file, while with Parquet only the file footer is read. With ORC, columns are mapped by index, like CSV, rather than by name like JSON and Parquet, which is more limiting for schema evolution (unlike CSV this behavior [can be changed](https://docs.aws.amazon.com/athena/latest/ug/handling-schema-updates-chapter.html#index-access), though).
 
 I qualified the Parquet recommendation slightly, because it's very rare that you don't have any constraint. A common problem that you almost certainly will run into is that it's not easy to produce Parquet files in the first place. You almost have to run something like Spark to do it, and running Spark is way more complicated than running Athena, and it doesn't make sense to do just to produce optimized files for Athena, right?
 

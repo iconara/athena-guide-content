@@ -7,7 +7,7 @@ author: Theo Tolv
 
 Most of the data formats that Athena supports have support for complex types in the form of lists and maps. It even supports lists and maps in CSV files, if you really want it to.
 
-The relational model wasn't made with complex types in mind, but modern data is very rarely flat. Developers like data formats like JSON because they allow for expressing things like sone-to-many relationships naturally and in a self-contained manner. When you try to describe the world you often end up with lists of things, the one-or-more type of relationship is very common, and things like lists of tags, or key/value pairs of metadata is more or less standard.
+The relational model wasn't made with complex types in mind, but modern data is very rarely flat. Developers like data formats like JSON because they allow for expressing things like one-to-many relationships naturally and in a self-contained manner. When you try to describe the world you often end up with lists of things, the one-or-more type of relationship is very common, and things like lists of tags, or key/value pairs of metadata is more or less standard.
 
 Before Athena I worked a lot with Redshift, and was often frustrated with the lack of complex types. The data I worked with almost always contained lists of strings and other similarly "simple" complex types. With Athena this is almost never an issue.
 
@@ -31,7 +31,7 @@ In my experience, most JSON data isn't very hierarchical. Most of the properties
 
 The [official Athena documentation](https://docs.aws.amazon.com/athena/latest/ug/json-serde.html) makes a fairly good job at describing how to create tables for JSON data.
 
-What's good to know is that Athena is farily forgiving when it comes to describing complex types. If you define a column as `array<string>` and the JSON document has a list of numbers, that works too, as long as type coercion works there is usually no problem. More importantly, if you define a struct column, the fields of the struct work just like the columns of a table: if they're not found in the data the value defaults to `NULL`, and if there are more properties in the data than in the table definition, those properties are ignored.
+What's good to know is that Athena is fairly forgiving when it comes to describing complex types. If you define a column as `array<string>` and the JSON document has a list of numbers, that works too, as long as type coercion works there is usually no problem. More importantly, if you define a struct column, the fields of the struct work just like the columns of a table: if they're not found in the data the value defaults to `NULL`, and if there are more properties in the data than in the table definition, those properties are ignored.
 
 ### Schemaless or schemafree?
 
@@ -41,7 +41,7 @@ If you don't control the code that produces a data set it can take some time to 
 
 Lots of tools exist that are aimed at helping you figure out the schema of JSON data. Glue Crawlers, for example, will read a sample of your data and figure out which properties exist, and their types, and at re:Invent 2019, AWS launched a feature that [detects the schemas of events sent through EventBridge](https://aws.amazon.com/about-aws/whats-new/2019/12/introducing-amazon-eventbridge-schema-registry-now-in-preview/). In some situations tools like these might be helpful, but in other situations they might just make it worse. Glue Crawlers can, for example, [flip-flop the schema of a table](https://stackoverflow.com/q/61297671/1109) from run to run if the sample they look at each time is different enough. Say your documents have a property that contains arbitary key/value pairs from your users. Glue won't figure out that there is really no schema there, and instead find different schemas on different days.
 
-One exampe of free-form properties like these can be found in CloudTrail logs. There are properties like `requestParameters` and `additionalEventData` that are service specific. Even if these properties could potentially be described using the union of what all AWS services put into them today, we can't tell how future services will use them. These properties both have and don't have schemas, depending on your point of view. From a global perspective where you want to consume events from all services, and future services, you'll have to think of them as free-form structures.
+One example of free-form properties like these can be found in CloudTrail logs. There are properties like `requestParameters` and `additionalEventData` that are service specific. Even if these properties could potentially be described using the union of what all AWS services put into them today, we can't tell how future services will use them. These properties both have and don't have schemas, depending on your point of view. From a global perspective where you want to consume events from all services, and future services, you'll have to think of them as free-form structures.
 
 Luckily, there's a solution for that, and I'm going to describe it in detail when discussing how to work with [complex types in queries and free form structures](#working-with-free-form-structures). For now, you can do as the [Athena documentation about CloudTrail][cloudtrail] suggests and use the type `string` for columns where the type can't be pinned down. You can also use `map<string,string>` when you know a property is an object, but not what the values are.
 
@@ -51,11 +51,11 @@ Parquet, ORC, and Avro are also data formats that support hierarchical structure
 
 ### Map keys
 
-JSON and Avro both require keys in objects/maps to be strings, but Parquet and ORC have are more relaxed and allow keys to be of other types. Athena supports this fully and even though your data is probably the limiting factor, you can declare tables with maps where the keys are any scalar type. Complex type keys are not supported, though.
+JSON and Avro both require keys in objects/maps to be strings, but Parquet and ORC are more relaxed and allow keys to be of other types. Athena supports this fully and even though your data is probably the limiting factor, you can declare tables with maps where the keys are any scalar type. Complex type keys are not supported, though.
 
 ### Struct or map?
 
-From the table modelling perspective the struct and map types overlap. In many situations where you have an object property in JSON, for example, you could use either. My general advice is that if you know the names of the fields of the object property you should use a struct in your table. However, if property is free form, as in the CloudTrail example above, a map is more suitable.
+From the table modelling perspective the struct and map types overlap. In many situations where you have an object property in JSON, for example, you could use either. My general advice is that if you know the names of the fields of the object property you should use a struct in your table. However, if the property is free form, as in the CloudTrail example above, a map is more suitable.
 
 Map functions won't work on struct columns, so if you are planning to use map functions a lot then using the map type will make that easier.
 
@@ -111,7 +111,7 @@ GROUP BY article_id
 
 #### Flattening arrays
 
-Other times you want to go in the other direction, you have an array but you want a row per element in the array. For this you can use the `UNNEST` operation, which I have have written [a separate article about](/articles/unnest-arrays-to-rows/). In many ways you can think of `UNNEST` as the reverse of `array_agg`.
+Other times you want to go in the other direction, you have an array but you want a row per element in the array. For this you can use the `UNNEST` operation, which I have written [a separate article about](/articles/unnest-arrays-to-rows/). In many ways you can think of `UNNEST` as the reverse of `array_agg`.
 
   [array]: https://prestosql.io/docs/0.172/functions/array.html
   [array_element_at]: https://prestosql.io/docs/0.172/functions/array.html#element_at
@@ -133,7 +133,7 @@ Other times you want to go in the other direction, you have an array but you wan
 
 Just as with arrays, map access looks a lot like it does in programming languages with literal maps (e.g. dictionaries in Python, objects in JavaScript, hashes in Ruby).
 
-An column called `params` with type `map<string,string>` can be accessed like this:
+A column called `params` with type `map<string,string>` can be accessed like this:
 
 ```sql
 SELECT
@@ -173,7 +173,7 @@ FROM my_table
 
 The lambda expression is in this case `tag -> upper(tag)`. The symbol before `->` is the argument and the expression after is the body. The body can use almost all functions, and in the example above I use the [`upper`](https://prestosql.io/docs/0.172/functions/string.html#upper) string function.
 
-Functions that take lambda expressions act each row individually, they are not aggregate functions in the SQL sense. It helps me to think of a regular aggregate function like [`max`](https://prestosql.io/docs/0.172/functions/aggregate.html#max) as operating vertically on a table, and an array function like [`array_max`][array_max] as operating horizontally on the elements of a column of a single row.
+Functions that take lambda expressions act on each row individually, they are not aggregate functions in the SQL sense. It helps me to think of a regular aggregate function like [`max`](https://prestosql.io/docs/0.172/functions/aggregate.html#max) as operating vertically on a table, and an array function like [`array_max`][array_max] as operating horizontally on the elements of a column of a single row.
 
 Functions that operate on arrays usually have one argument, the element, and functions that operate on maps two, the key and the value. When there is more than one argument the argument list must be enclosed in parenthesis, with one argument the parenthesis are optional. This is, for example, how you create a new map with all values in upper case:
 
@@ -220,7 +220,7 @@ The JSON type and functions are useful for working with arbitrary structures and
 
 ### Hide the sausage making with views
 
-When your queries become really complicated due to long expressions that extract values from deeply nested structures, or multiple levels of aggregation and flattening, it's a good idea to create a view to hide all the messy sausage making. It's going to me much easier for the people and code that will query the data set if it's clean and neat.
+When your queries become really complicated due to long expressions that extract values from deeply nested structures, or multiple levels of aggregation and flattening, it's a good idea to create a view to hide all the messy sausage making. It's going to be much easier for the people and code that will query the data set if it's clean and neat.
 
   [json]: https://prestosql.io/docs/0.172/functions/json.html
   [json_extract_scalar]: https://prestosql.io/docs/0.172/functions/json.html#json_extract_scalar
@@ -234,7 +234,7 @@ Athena stores query results as CSV files on S3. Regardless of whether you use th
 
 CSV is not exactly known for it's great support for complex types, so what do you do when you want to return an array or a map from a query?
 
-Athena won't stop you from having arrays and maps in the result, it will dutifully serialize these values into CSV – and make a proper mess out of things. It's serialization format for lists and maps does not quote the elements, keys, or values, which means that it's very easy to produce output that is ambiguous. If you see `"[hello, world]"` in an Athena output file there is no way to tell if the value was an array with one element ("hello, world") or two elements ("hello" and "world"). You can also not tell numbers and strings apart, and Athena's query metadata also doesn't contain that information, it only specifies if a column is an array or map, not the types of the elements, keys, or values.
+Athena won't stop you from having arrays and maps in the result, it will dutifully serialize these values into CSV – and make a proper mess out of things. Its serialization format for lists and maps does not quote the elements, keys, or values, which means that it's very easy to produce output that is ambiguous. If you see `"[hello, world]"` in an Athena output file there is no way to tell if the value was an array with one element ("hello, world") or two elements ("hello" and "world"). You can also not tell numbers and strings apart, and Athena's query metadata also doesn't contain that information, it only specifies if a column is an array or map, not the types of the elements, keys, or values.
 
 Because of this you should _never_ return raw arrays or maps from queries. It may appear to work for some test cases, but in general it is completely unsafe.
 
