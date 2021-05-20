@@ -1,6 +1,6 @@
 ---
 title: Working with CSV
-date: 2019-07-05
+date: 2020-07-05
 author: Theo Tolv
 ---
 # Working with CSV

@@ -1,6 +1,6 @@
 ---
 title: Flatten arrays into rows with UNNEST
-date: 2019-07-03
+date: 2020-07-03
 author: Theo Tolv
 ---
 # Flatten arrays into rows with UNNEST

@@ -1,6 +1,6 @@
 ---
 title: Five ways to add partitions
-date: 2019-06-29
+date: 2020-06-29
 author: Theo Tolv
 ---
 # Five ways to add partitions
