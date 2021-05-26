@@ -5,7 +5,7 @@ author: Theo Tolv
 series:
   index: 5
 ---
-# Athena Basics: Running Queries
+# Athena Basics: Permissions
 
 In this series of articles on Athena basics I cover the things that aren't explicit in the official documentation. I'll go beyond the bare technical details and try to explain things in more context, and how it works in practice. There won't be much in terms of code or SQL, but wherever possible I link to other articles in this guide that go into much deeper detail.
 
