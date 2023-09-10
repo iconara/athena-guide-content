@@ -176,4 +176,4 @@ Curiously the Athena documentation doesn't mention `SymlinkTextInputFormat`, and
 
 I came across `SymlinkTextInputFormat` when I read [the documentation on how to query S3 Inventory with Athena](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-inventory-athena-query.html) and I've reverse engineered most of what I know about it from there.
 
-`SymlinkTextInputFormat` is a useful tool to solve some difficult situations when you really want to avoid having to reorganize your data sets. It creates a level of indirection that needs to be maintained, though, and I don't know how it affects performance. It's not for every situation, but I'm very happy that it exists the times when I need it.
+`SymlinkTextInputFormat` is a useful tool to solve some difficult situations when you really want to avoid having to reorganize your data sets. It creates a level of indirection that needs to be maintained, though, and it also adds overhead in the form of more S3 listings. It's not for every situation, but I'm very happy that it exists the times when I need it.
