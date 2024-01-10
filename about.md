@@ -2,7 +2,7 @@ This guide is written by me, [Theo Tolv](https://iconara.net/). I've been using 
 
 After answering over a hundred [questions tagged `amazon-athena`][1] on Stack Overflow, I felt that there needed to be a place where the questions that come up again and can be answered. This guide is meant to cover the most frequently asked questions, and more.
 
-Since the end of 2020 I work as a senior solutions architect at AWS, but this guide is something I work on in my spare time.
+Since 2022 I work at AWS with Amazon Athena, but this guide is something I work on in my spare time.
 
 ## Who is this guide for?
 
