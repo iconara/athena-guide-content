@@ -8,12 +8,6 @@ Since 2022 I work at AWS with Amazon Athena, but this guide is something I work 
 
 The articles in this guide are inspired by questions on Stack Overflow, and are for people learning Athena. I assume you've read parts of the [official Athena documentation][2] and know how to create tables, and run queries. I'm not covering the things that are in the getting started guides, but the things you might need to know when you've learned the basics, and the things that aren't that obvious from just reading the documentation.
 
-## How to ask me questions
-
-If you have Amazon Athena related questions the best place to ask them is on [Stack Overflow](https://stackoverflow.com). I look at the [`amazon-athena`][1] tag frequently and answer all questions that I can.
-
-If you have specific questions for me you can find me as [@iconara on Twitter](https://twitter.com/iconara), or find me by name on some of the AWS Slack channels, like [AWS Developers](https://awsdevelopers.slack.com), [Open Guide to AWS](https://og-aws.slack.com/), or [AWS Community Nordics](https://aws-community-nordics.slack.com).
-
 ## Where to report issues
 
 The content for this site is available at [iconara/athena-guide-content](http://github.com/iconara/athena-guide-content) where you can report issues and contribute fixes.
