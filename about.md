@@ -23,4 +23,4 @@ The content for this site is available at [iconara/athena-guide-content](http://
 If you find this guide helpful you can [buy me a coffee](https://buymeacoffee.com/iconara).
 
   [1]: https://stackoverflow.com/questions/tagged/amazon-athena
-  [2]: https://docs.aws.amazon.com/athena/latest/ug/work-with-data.html
+  [2]: https://docs.aws.amazon.com/athena/latest/ug/using-athena-sql.html
