@@ -18,11 +18,11 @@ In this article I'll cover:
 
 The other articles in this series cover:
 
-* [Key concepts](/articles/athena-basics-key-concepts/)
-* [Working with data](/articles/athena-basics-working-with-data/)
-* [Running queries](/articles/athena-basics-running-queries/)
-* [Permissions](/articles/athena-basics-permissions/)
-* [Pricing Model](/articles/athena-basics-pricing-model/)
+* [Key concepts](./athena-basics-key-concepts)
+* [Working with data](./athena-basics-working-with-data)
+* [Running queries](./athena-basics-running-queries)
+* [Permissions](./athena-basics-permissions)
+* [Pricing Model](./athena-basics-pricing-model)
 
 ## The origins and components of Athena
 
@@ -52,8 +52,8 @@ I'll talk more about the pricing model below, but it's worth mentioning here too
 
 The following articles continue this guide to understanding the basics of Athena:
 
-* [Key concepts](/articles/athena-basics-key-concepts/#key-concepts)
-* [Working with data](/articles/athena-basics-working-with-data/#working-with-data)
-* [Running queries](/articles/athena-basics-running-queries/#running-queries)
-* [Permissions](/articles/athena-basics-permissions/#permissions)
-* [Pricing Model](/articles/athena-basics-pricing-model/#pricing-model)
+* [Key concepts](./athena-basics-key-concepts)
+* [Working with data](./athena-basics-working-with-data)
+* [Running queries](./athena-basics-running-queries)
+* [Permissions](./athena-basics-permissions)
+* [Pricing Model](./athena-basics-pricing-model)

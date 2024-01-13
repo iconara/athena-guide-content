@@ -18,11 +18,11 @@ In this article I'll cover:
 
 The other articles in this series cover:
 
-* [What is Athena?](/articles/athena-basics-what-is-athena/)
-* [Key Concepts](/articles/athena-basics-key-concepts/)
-* [Running Queries](/articles/athena-basics-running-queries/)
-* [Permissions](/articles/athena-basics-permissions/)
-* [Pricing Model](/articles/athena-basics-pricing-model/)
+* [What is Athena?](./athena-basics-what-is-athena)
+* [Key Concepts](./athena-basics-key-concepts)
+* [Running Queries](./athena-basics-running-queries)
+* [Permissions](./athena-basics-permissions)
+* [Pricing Model](./athena-basics-pricing-model)
 
 ## What is a "serde"?
 
@@ -34,7 +34,7 @@ Tables specify a serde so that Athena knows how to read the data during query ex
 
 Athena supports serdes for well defined formats such as [JSON][json-serde], [Avro][avro-serde], [Parquet][parquet-serde], and [ORC][orc-serde], as well as a [specialized serde for reading CloudTrail][cloudtrail-serde] logs (which are JSON, but formatted in a way that is not suitable for the standard JSON serde). The serdes have a few configuration properties you can set for specific situations, but with the exception of the Avro serde they can be used more or less straight out of the box with no configuration necessary. To use the Avro serde you must provide a schema as a configuration property.
 
-Meanwhile, CSV, which is not exactly well defined, but arguably the most popular data format in history, is covered by two different serdes, and even those two don't really cover all the bases when it comes to the weird variants that people come up with. They do provide configuration for delimiters, quoting, and escapes, though. I cover as many details as I can about using CSV in Athena in [Working with CSV](/articles/working-with-csv/).
+Meanwhile, CSV, which is not exactly well defined, but arguably the most popular data format in history, is covered by two different serdes, and even those two don't really cover all the bases when it comes to the weird variants that people come up with. They do provide configuration for delimiters, quoting, and escapes, though. I cover as many details as I can about using CSV in Athena in [Working with CSV](./working-with-csv).
 
 Finally there's a couple of serdes that can be used to parse custom line-based text formats: [one where you specify a regular expression][regex-serde] with capture groups that are mapped to table columns, and one slightly less lethal [based on Grok][grok-serde]. These are very useful for working with different kinds of unstructured and semi-structured logs, like VPC flow logs, or application logs.
 
@@ -86,8 +86,8 @@ You should also avoid deeply nested directory structures and too many files in a
 
 The following articles continue this guide to understanding the basics of Athena:
 
-* [What is Athena?](/articles/athena-basics-what-is-athena/)
-* [Key Concepts](/articles/athena-basics-key-concepts/)
-* [Running Queries](/articles/athena-basics-running-queries/)
-* [Permissions](/articles/athena-basics-permissions/)
-* [Pricing Model](/articles/athena-basics-pricing-model/)
+* [What is Athena?](./athena-basics-what-is-athena)
+* [Key Concepts](./athena-basics-key-concepts)
+* [Running Queries](./athena-basics-running-queries)
+* [Permissions](./athena-basics-permissions)
+* [Pricing Model](./athena-basics-pricing-model)

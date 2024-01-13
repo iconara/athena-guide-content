@@ -17,11 +17,11 @@ In this article I'll cover:
 
 The other articles in this series cover:
 
-* [What is Athena?](/articles/athena-basics-what-is-athena/)
-* [Working With Data](/articles/athena-basics-working-with-data/)
-* [Running Queries](/articles/athena-basics-running-queries/)
-* [Permissions](/articles/athena-basics-permissions/)
-* [Pricing Model](/articles/athena-basics-pricing-model/)
+* [What is Athena?](./athena-basics-what-is-athena)
+* [Working With Data](./athena-basics-working-with-data)
+* [Running Queries](./athena-basics-running-queries)
+* [Permissions](./athena-basics-permissions)
+* [Pricing Model](./athena-basics-pricing-model)
 
 ## Schema-on-read
 
@@ -57,13 +57,13 @@ The answer, as you might have guessed from the title of this section, is partiti
 
 When you set up a table in Athena you include information about how the data is partitioned by specifying one or more partition keys, these correspond to the directory hierarchy of the data set. If the data is organized by customer and date, for example `data/acme/2020-08-01/data.json`, the partition keys could be `customer` and `date`, e.g. `PARTITIONED BY (customer string, date string)`. When querying you can say `WHERE customer = 'acme'` and Athena will know it only has to look in the `data/acme/` directory and can skip everything else – and if you also include a filter on the date it can narrow down the list of files to process even further.
 
-When you create a regular table you can run queries against it straight away. Athena will look at the table's location field and processes all the files it finds. Partitioned tables also have a location, but that's just because it is required by the Glue Data Catalog. To be able to query a partitioned table you need to tell Athena about the partitions of the data set. This can be done in many different ways, and I cover them in more detail in [Five ways to add partitions](/articles/five-ways-to-add-partitions/). The short version is that you either create partitions in the Glue Data Catalog (through Athena DDL statements or API calls), or you configure the table with metadata that makes it possible for Athena to figure out the location of partitions (this is called [Partition Projection](https://docs.aws.amazon.com/athena/latest/ug/partition-projection.html)).
+When you create a regular table you can run queries against it straight away. Athena will look at the table's location field and processes all the files it finds. Partitioned tables also have a location, but that's just because it is required by the Glue Data Catalog. To be able to query a partitioned table you need to tell Athena about the partitions of the data set. This can be done in many different ways, and I cover them in more detail in [Five ways to add partitions](./five-ways-to-add-partitions). The short version is that you either create partitions in the Glue Data Catalog (through Athena DDL statements or API calls), or you configure the table with metadata that makes it possible for Athena to figure out the location of partitions (this is called [Partition Projection](https://docs.aws.amazon.com/athena/latest/ug/partition-projection.html)).
 
 Almost all data sets are already partitioned in some way, it's very rare in my experience to find a non-trivial data set where all files are just in a single directory without any organization to it. The most common form of partitioning is based on time. Data sets tend to grow over time, and adding new data to directories named from the date makes a lot of sense. In general, data sets are often organized in a way that makes it easy for the producing side, for example, to make it possible to replace a piece of data if it changes.
 
 [AWS CloudTrail is a good example of how data sets tend to get organized](https://docs.aws.amazon.com/athena/latest/ug/cloudtrail-logs.html). CloudTrail delivers logs to S3 like this: `s3://some-bucket/AWSLogs/0123456789/CloudTrail/us-east-1/2020/08/21/0123456789_CloudTrail_us-east-1_20200821T2120Z_W8LDOrF9dU4NZ7Kt.json.gz`. This URI contains (after `CloudTrail` which is the root), the region, the year, month, and day, and the file name. This partitioning scheme makes it easy to find all files pertaining to a specific AWS region, and if you only want to query the last month, day, or hour's worth of logs a query can easily skip most of the data set. This data set can be said to be partitioned by region, year, month, and day (or by region and date, you don't have to have a one-to-one mapping between partition keys and path components).
 
-A lot of what is written about partitioning in Athena uses a partitioning style that looks like `data/region=us-east-1/year=2020/month=08/day=21/data.json`. This is called [Hive style partitioning](/articles/five-ways-to-add-partitions/) and is common in the Hadoop ecosystem. It has some benefits, but even though the Athena documentation may make it look like this is _the_ way to partition data you don't have to use this scheme, and it's extremely uncommon to see outside of the Hadoop world.
+A lot of what is written about partitioning in Athena uses a partitioning style that looks like `data/region=us-east-1/year=2020/month=08/day=21/data.json`. This is called [Hive style partitioning](./five-ways-to-add-partitions) and is common in the Hadoop ecosystem. It has some benefits, but even though the Athena documentation may make it look like this is _the_ way to partition data you don't have to use this scheme, and it's extremely uncommon to see outside of the Hadoop world.
 
 You can map the partitioning of most data sets to Athena tables, but there is one situation that Athena does not handle: files with different schemas in the same directory. Someone might have decided to export data into directories named from the date, but mix files representing different kinds of data in these. For example `data/2020-08-21/orders.csv` and `data/2020-08-21/invoices.csv`. This might make sense when producing the data, but is unfortunately incompatible with the way Athena works. Athena will process all files found in a table or partition's location, and there is no way to configure it to filter based on file name.
 
@@ -71,8 +71,8 @@ You can map the partitioning of most data sets to Athena tables, but there is on
 
 The following articles continue this guide to understanding the basics of Athena:
 
-* [What is Athena?](/articles/athena-basics-what-is-athena/)
-* [Working With Data](/articles/athena-basics-working-with-data/)
-* [Running Queries](/articles/athena-basics-running-queries/)
-* [Permissions](/articles/athena-basics-permissions/)
-* [Pricing Model](/articles/athena-basics-pricing-model/)
+* [What is Athena?](./athena-basics-what-is-athena)
+* [Working With Data](./athena-basics-working-with-data)
+* [Running Queries](./athena-basics-running-queries)
+* [Permissions](./athena-basics-permissions)
+* [Pricing Model](./athena-basics-pricing-model)

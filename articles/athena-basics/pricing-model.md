@@ -17,11 +17,11 @@ In this article I'll cover:
 
 The other articles in this series cover:
 
-* [What is Athena?](/articles/athena-basics-what-is-athena/)
-* [Key Concepts](/articles/athena-basics-key-concepts/)
-* [Working with Data](/articles/athena-basics-working-with-data/)
-* [Running Queries](/articles/athena-basics-running-queries/)
-* [Permissions](/articles/athena-basics-permissions/)
+* [What is Athena?](./athena-basics-what-is-athena)
+* [Key Concepts](./athena-basics-key-concepts)
+* [Working with Data](./athena-basics-working-with-data)
+* [Running Queries](./athena-basics-running-queries)
+* [Permissions](./athena-basics-permissions)
 
 ## You pay for what you use
 
@@ -49,8 +49,8 @@ I really wish there were better tools available to predict the costs of queries.
 
 The following articles continue this guide to understanding the basics of Athena:
 
-* [What is Athena?](/articles/athena-basics-what-is-athena/)
-* [Key Concepts](/articles/athena-basics-key-concepts/)
-* [Working with Data](/articles/athena-basics-working-with-data/)
-* [Running Queries](/articles/athena-basics-running-queries/)
-* [Permissions](/articles/athena-basics-permissions/)
+* [What is Athena?](./athena-basics-what-is-athena)
+* [Key Concepts](./athena-basics-key-concepts)
+* [Working with Data](./athena-basics-working-with-data)
+* [Running Queries](./athena-basics-running-queries)
+* [Permissions](./athena-basics-permissions)
