@@ -19,11 +19,11 @@ In this article I'll cover:
 
 The other articles in this series cover:
 
-* [What is Athena?](/articles/athena-basics-what-is-athena/)
-* [Key Concepts](/articles/athena-basics-key-concepts/)
-* [Working with Data](/articles/athena-basics-working-with-data/)
-* [Permissions](/articles/athena-basics-permissions/)
-* [Pricing Model](/articles/athena-basics-pricing-model/)
+* [What is Athena?](./athena-basics-what-is-athena)
+* [Key Concepts](./athena-basics-key-concepts)
+* [Working with Data](./athena-basics-working-with-data)
+* [Permissions](./athena-basics-permissions)
+* [Pricing Model](./athena-basics-pricing-model)
 
 ## Using the API
 
@@ -81,8 +81,8 @@ Even if you stay within your quota there is however no guarantee that your queri
 
 The following articles continue this guide to understanding the basics of Athena:
 
-* [What is Athena?](/articles/athena-basics-what-is-athena/)
-* [Key Concepts](/articles/athena-basics-key-concepts/)
-* [Working with Data](/articles/athena-basics-working-with-data/)
-* [Permissions](/articles/athena-basics-permissions/)
-* [Pricing Model](/articles/athena-basics-pricing-model/)
+* [What is Athena?](./athena-basics-what-is-athena)
+* [Key Concepts](./athena-basics-key-concepts)
+* [Working with Data](./athena-basics-working-with-data)
+* [Permissions](./athena-basics-permissions)
+* [Pricing Model](./athena-basics-pricing-model)

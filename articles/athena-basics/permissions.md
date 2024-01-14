@@ -15,11 +15,11 @@ In this article I'll cover:
 
 The other articles in this series cover:
 
-* [What is Athena?](/articles/athena-basics-what-is-athena/)
-* [Key Concepts](/articles/athena-basics-key-concepts/)
-* [Working with Data](/articles/athena-basics-working-with-data/)
-* [Running Queries](/articles/athena-basics-running-queries/)
-* [Pricing Model](/articles/athena-basics-pricing-model/)
+* [What is Athena?](./athena-basics-what-is-athena)
+* [Key Concepts](./athena-basics-key-concepts)
+* [Working with Data](./athena-basics-working-with-data)
+* [Running Queries](./athena-basics-running-queries)
+* [Pricing Model](./athena-basics-pricing-model)
 
 ## IAM and Athena
 
@@ -37,8 +37,8 @@ A side effect of the permissions model is that a principal that is allowed to qu
 
 The following articles continue this guide to understanding the basics of Athena:
 
-* [What is Athena?](/articles/athena-basics-what-is-athena/)
-* [Key Concepts](/articles/athena-basics-key-concepts/)
-* [Working with Data](/articles/athena-basics-working-with-data/)
-* [Running Queries](/articles/athena-basics-running-queries/)
-* [Pricing Model](/articles/athena-basics-pricing-model/)
+* [What is Athena?](./athena-basics-what-is-athena)
+* [Key Concepts](./athena-basics-key-concepts)
+* [Working with Data](./athena-basics-working-with-data)
+* [Running Queries](./athena-basics-running-queries)
+* [Pricing Model](./athena-basics-pricing-model)

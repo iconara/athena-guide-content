@@ -1,9 +1,9 @@
 ---
-title: Stitching together tables with SymlinkTextInputFormat
+title: Stitching tables together with SymlinkTextInputFormat
 date: 2021-08-17
 author: Theo Tolv
 ---
-# Stitching together tables with SymlinkTextInputFormat
+# Stitching tables together with SymlinkTextInputFormat
 
 A unique selling point of Athena is that you can use it to query data that you already have, data that was not created specifically to be consumed by Athena. When it comes to different file formats Athena has great support for many different kinds, but as for the way a data set is organized on S3, Athena is much more picky. In this article I will show you how to deal with situations when your data set is not neatly organized in the strict, non-overlapping hierarchies, that Athena requires.
 

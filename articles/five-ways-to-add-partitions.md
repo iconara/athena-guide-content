@@ -48,11 +48,11 @@ With this in mind, you may ask when you shouldn't use this alternative. One reas
 
 _When to use:_ interactive use only with limited number of partitions – too slow and inefficient for anything else, and only works for some data sets.
 
-This command is often used in examples, and while it works, it really only works when you use [Hive style partitioning](/articles/hive-style-partitioning/) and have few partitions. With more partitions it will take a long time to run, and can even time out.
+This command is often used in examples, and while it works, it really only works when you use [Hive style partitioning](./hive-style-partitioning) and have few partitions. With more partitions it will take a long time to run, and can even time out.
 
 If you've just created a table and have a couple of tens of partitions with a couple of files each, it can be a convenient way to get these loaded without having to write a long `ALTER TABLE ADD PARTITION` statement. For all other cases you are better off writing a script that lists S3 and generates the SQL.
 
-See [`MSCK REPAIR TABLE`](/articles/msck-repair-table/) for a longer discussion about the command.
+See [`MSCK REPAIR TABLE`](./msck-repair-table) for a longer discussion about the command.
 
 ## Using the Glue Data Catalog API
 
@@ -80,7 +80,7 @@ Crawlers are meant to figure everything out for you. When you have a pile of dat
 
 The problem is that crawlers try to be very general, with very limited configurability. Unless your data set is fairly well organized to begin with you are probably going to end up with something that is messy and only half works – or something that works for a while and then stops working. The reality is that your data set needs to be well organized and needs a fairly fixed schema for Glue Crawlers to work, but if that's the case, any of the options above is probably going to serve you better (with the exception of `MSCK REPAIR TABLE`).
 
-If your data uses [Hive style partitioning](/articles/hive-style-partitioning/), and it's schema doesn't evolve in drastic ways, you can probably use a crawler. There are definitely cases when it's less work to set up a crawler than, for example, creating a Lambda function that does a Glue Data Catalog API call in response to an S3 notification. In all my time working with Athena I have not found a case where Glue Crawlers felt like the right solution. I have used them, before [Partition Projection](https://docs.aws.amazon.com/athena/latest/ug/partition-projection.html), as the least complicated way to keep tables for my [Cost and Usage Reports](https://docs.aws.amazon.com/cur/latest/userguide/use-athena-cf.html) up to date, for example.
+If your data uses [Hive style partitioning](./hive-style-partitioning), and it's schema doesn't evolve in drastic ways, you can probably use a crawler. There are definitely cases when it's less work to set up a crawler than, for example, creating a Lambda function that does a Glue Data Catalog API call in response to an S3 notification. In all my time working with Athena I have not found a case where Glue Crawlers felt like the right solution. I have used them, before [Partition Projection](https://docs.aws.amazon.com/athena/latest/ug/partition-projection.html), as the least complicated way to keep tables for my [Cost and Usage Reports](https://docs.aws.amazon.com/cur/latest/userguide/use-athena-cf.html) up to date, for example.
 
 There is an endless stream of questions on Stack Overflow from people who have problems getting Glue Crawlers to work for them. When the use case doesn't fit what Glue Crawlers were designed for (an unfortunately not publicly defined scope), you get surprising results like [thousands of tables being created](https://stackoverflow.com/q/54332699/1109), [unusable tables](https://stackoverflow.com/q/46241088/1109), [table schemas flip-floping](https://stackoverflow.com/q/61297671/1109), and so on, and so forth.
 

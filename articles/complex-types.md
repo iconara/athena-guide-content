@@ -111,7 +111,7 @@ GROUP BY article_id
 
 #### Flattening arrays
 
-Other times you want to go in the other direction, you have an array but you want a row per element in the array. For this you can use the `UNNEST` operation, which I have written [a separate article about](/articles/unnest-arrays-to-rows/). In many ways you can think of `UNNEST` as the reverse of `array_agg`.
+Other times you want to go in the other direction, you have an array but you want a row per element in the array. For this you can use the `UNNEST` operation, which I have written [a separate article about](./unnest-arrays-to-rows). In many ways you can think of `UNNEST` as the reverse of `array_agg`.
 
   [array]: https://prestosql.io/docs/0.172/functions/array.html
   [array_element_at]: https://prestosql.io/docs/0.172/functions/array.html#element_at
@@ -150,7 +150,7 @@ You can create a new map with transformed keys with [`transform_keys`][transform
 
 #### Flattening maps
 
-Although less common, maps can be used with `UNNEST` to pivot them into rows. See [the article `UNNEST` for more information](/articles/unnest-arrays-to-rows/).
+Although less common, maps can be used with `UNNEST` to pivot them into rows. See [the article `UNNEST` for more information](./unnest-arrays-to-rows).
 
   [map]: https://prestosql.io/docs/0.172/functions/map.html
   [map_element_at]: https://prestosql.io/docs/0.172/functions/map.html#element_at
