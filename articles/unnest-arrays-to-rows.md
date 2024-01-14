@@ -37,9 +37,8 @@ CROSS JOIN UNNEST(cities_and_countries.cities) AS unnested_cities (city)
 
 Which would give the following result:
 
-```
 country | city
---------+----------
+--------|----------
 se      | Stockholm
 se      | Göteborg
 se      | Malmö
@@ -49,7 +48,6 @@ fr      | Paris
 fr      | Nice
 fr      | Marseille
 fr      | Grenoble
-```
 
 It's like the arrays have been pivoted (or unpivoted, depending on your point of view). Another way to think of it is that the source table has been joined with another table with all the array elements, using a join key that identifies which row they belonged to.
 
@@ -63,9 +61,8 @@ Moving on to the `CROSS JOIN`, this may look a bit scary. Cross joins can produc
 
 The result of the cross join is a relation with the source rows repeated once per element in the source row's array, and an extra column that is the element itself. If you changed the query to `SELECT * FROM …` you would get the following result, which may help you understand what's going on:
 
-```
 country | cities                             | city
---------+------------------------------------+----------
+--------|------------------------------------|----------
 se      | [Stockholm, Göteborg, Malmö]       | Stockholm
 se      | [Stockholm, Göteborg, Malmö]       | Göteborg
 se      | [Stockholm, Göteborg, Malmö]       | Malmö
@@ -75,7 +72,6 @@ fr      | [Paris, Nice, Marseille, Grenoble] | Paris
 fr      | [Paris, Nice, Marseille, Grenoble] | Nice
 fr      | [Paris, Nice, Marseille, Grenoble] | Marseille
 fr      | [Paris, Nice, Marseille, Grenoble] | Grenoble
-```
 
 You can see that every column from the source relation exists in this relation as-is, even the column containing the array.
 
@@ -121,9 +117,8 @@ But what happens when you unnest multiple arrays like this? The first time I tri
 
 The query above would give the following result:
 
-```
 country | city      | river
---------+-----------+-------------
+--------|-----------|-------------
 se      | Göteborg  | Göta älv
 se      | Umeå      | Ume älv
 us      | New York  | Hudson River
@@ -131,7 +126,6 @@ us      | Seattle   | Cedar River
 fr      | Paris     | Seine
 fr      | Nice      | Var
 fr      | Marseille | NULL
-```
 
 ### Empty arrays
 
@@ -152,9 +146,8 @@ Notice that the index is added last in the list of columns of the unnested relat
 
 The query above would give the following result:
 
-```
 country | index | city
---------+-------+----------
+--------|-------|----------
 se      | 1     | Stockholm
 se      | 2     | Göteborg
 se      | 3     | Malmö
@@ -164,7 +157,6 @@ fr      | 1     | Paris
 fr      | 2     | Nice
 fr      | 3     | Marseille
 fr      | 4     | Grenoble
-```
 
 Note that array indexes are 1-based in Athena.
 
@@ -178,16 +170,14 @@ WHERE index < 3
 
 Which would result in this output:
 
-```
 country | index | city
---------+-------+----------
+--------|-------|----------
 se      | 1     | Stockholm
 se      | 2     | Göteborg
 us      | 1     | New York
 us      | 2     | Seattle
 fr      | 1     | Paris
 fr      | 2     | Nice
-```
 
 ## Unnesting maps
 
