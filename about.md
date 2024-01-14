@@ -1,3 +1,8 @@
+---
+title: About the Athena Guide
+---
+# About the Athena Guide
+
 This guide is written by me, [Theo Tolv](https://iconara.net/). I've been using Athena since its launch in 2016, and been a constant annoyance to the Athena service team for most of that time.
 
 After answering over a hundred [questions tagged `amazon-athena`][1] on Stack Overflow, I felt that there needed to be a place where the questions that come up again and can be answered. This guide is meant to cover the most frequently asked questions, and more.
