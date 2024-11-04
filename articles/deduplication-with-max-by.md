@@ -24,7 +24,7 @@ time             | sensor_id     | location        | battery_charge
 2023-10-09 10:49 | humidity-2    | office-east-1   |             95
 2023-10-09 11:00 | humidity-2    | office-east-1   |             94
 
-Each row is an event sent from a sensor, with the time, the sensor ID, the sensor location, and it's current battery charge. The sensors send an event roughly every five minutes. Sometimes an update fails to be sent for some reason, or it's delayed. The real world is messy, after all.
+Each row is an event sent from a sensor, with the time, the sensor ID, the sensor location, and its current battery charge. The sensors send an event roughly every five minutes. Sometimes an update fails to be sent for some reason, or it's delayed. The real world is messy, after all.
 
 Let's say we want to build a monitoring application that displays the latest known battery charge for each sensor. This feels like it should be easy, we should be able to order by the time and sensor ID and just pick the most recent row, something like `ORDER BY time DESC LIMIT 1` – but how to do that for each sensor ID and not for the whole data set? What if we use `GROUP BY sensor_id`? No, the sorting and limiting still applies to the whole result, hm… it's more complicated than it first appears.
 
@@ -48,7 +48,7 @@ FROM (
 WHERE row_number = 1
 ```
 
-It's not _that_ much SQL, but it's far from straight forward. The short explanation is that the `ROW_NUMBER() OVER …` expression finds the row number for this row in the set of rows with the same value of `sensor_id`, when ordered by `time` in descending order. This means that the row with the most recent value of `time` will get row number 1. We use this fact in the outer `SELECT` to pick only rows with row number 1. There will exactly one of these per `sensor_id` value, and it will be the one with the most recent information, and therefore most up to date value for `battery_charge`.
+It's not _that_ much SQL, but it's far from straight forward. The short explanation is that the `ROW_NUMBER() OVER …` expression finds the row number for this row in the set of rows with the same value of `sensor_id`, when ordered by `time` in descending order. This means that the row with the most recent value of `time` will get row number 1. We use this fact in the outer `SELECT` to pick only rows with row number 1. There will be exactly one of these per `sensor_id` value, and it will be the one with the most recent information, and therefore most up to date value for `battery_charge`.
 
 The detail that makes using window functions extra complex, and cause queries to be unnecessarily complex is that they often require multiple steps like this. There needs to be an inner query that computes the row number, and and outer that filters by the row number, because `WHERE` clauses are not allowed to have window functions.
 
@@ -56,7 +56,7 @@ I find queries with window functions much more difficult to understand than quer
 
 ## The quick and easy way, using `MAX_BY`
 
-Athena has a set of powerful aggregate functions that replace some common uses of window functions. For the battery charge problem we can use my favourite: [`MAX_BY`](https://trino.io/docs/current/functions/aggregate.html#max_by). It's a cousin of `MAX`, but with a trick up it's sleeve: instead of returning the greatest value of a column in a group, it can return the value from _another_ column from the group where the greatest value of a column was found. For example, `MAX_BY(battery_charge, time)` returns the value of `battery_charge` from the row with the greates value of `time` within the group.
+Athena has a set of powerful aggregate functions that replace some common uses of window functions. For the battery charge problem we can use my favourite: [`MAX_BY`](https://trino.io/docs/current/functions/aggregate.html#max_by). It's a cousin of `MAX`, but with a trick up its sleeve: instead of returning the greatest value of a column in a group, it can return the value from _another_ column from the group where the greatest value of a column was found. For example, `MAX_BY(battery_charge, time)` returns the value of `battery_charge` from the row with the greates value of `time` within the group.
 
 This means that all we need to find the most up to date battery charge information for each sensor is this:
 
@@ -85,7 +85,7 @@ Now that I've shown you `MAX_BY`, let me also introduce you to its siblings [`MI
 
 When I run my queries that require deduplication, some properties work like `battery_charge` where each update has a newer value, but other properties don't change. They're like the `location` column in the IoT dataset we're working with in this guide. If we want to include the location of the sensor in our battery charge report, we could use `MAX_BY` for that column too. Or we could use `MIN`, `MAX`, or even `MIN_BY`. They would all return the same value, because the value is the same on all rows. We could also use `ARBITRARY`, and tell the engine that we don't care. If we don't need the greatest value, why ask the engine to do the calculations?
 
-At this point we perhaps need a small aside about why we need any aggregate function at all. It goes back to the SQL standard, which says that if there is a `GROUP BY` clause, an expression has to be in that clause, or be an aggregate expression. In other words, if we say `SELECT sensor_id, location` we also must say `GROUP BY sensor_id, location`. If we don't, the engine would know which value within the group to use. We don't want to add an unnecessary expression to the `GROUP BY` clause, which means we need to use an aggregate function. Luckily, Athena has the perfect aggregate function to express the semantics we're after.
+At this point we perhaps need a small aside about why we need any aggregate function at all. It goes back to the SQL standard, which says that if there is a `GROUP BY` clause, an expression has to be in that clause, or be an aggregate expression. In other words, if we say `SELECT sensor_id, location` we also must say `GROUP BY sensor_id, location`. If we don't, the engine would not know which value within the group to use. We don't want to add an unnecessary expression to the `GROUP BY` clause, which means we need to use an aggregate function. Luckily, Athena has the perfect aggregate function to express the semantics we're after.
 
 ```sql
 SELECT sensor_id,
